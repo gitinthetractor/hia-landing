@@ -12,87 +12,137 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
+            /* Using min-height and padding to allow for a 'spaced' layout */
+            min-height: 100vh;
             margin: 0;
             text-align: center;
-            padding: 20px;
+            padding: 40px 20px;
+            box-sizing: border-box;
             overflow: hidden;
         }
 
-        /* --- THE LOGO SEAL --- */
+        /* --- THE TOP SECTION --- */
+        .brand-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
         .logo-seal {
-            width: 150px;
+            width: 140px;
             height: auto;
-            margin-bottom: 2rem;
+            margin-bottom: 0.75rem;
             filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
         }
 
-        /* --- THE CUSTOM IMAGE HEADER --- */
         .text-header {
             width: 100%;
-            max-width: 650px; /* Adjusted for clarity */
+            max-width: 650px; 
             height: auto;
             margin-bottom: 0.5rem;
         }
 
-        /* --- THE TECHNICAL BYLINE (68 CHARACTERS) --- */
         .typewriter-byline {
             font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
             color: #E0E0E0;
             font-size: 0.75rem;
             letter-spacing: 0.02em;
-            margin-bottom: 4.5rem;
             white-space: nowrap;
             overflow: hidden;
             border-right: .12em solid #FFFFFF;
-            margin-left: auto;
-            margin-right: auto;
-            width: 68ch; 
+            width: 64ch; 
             animation: 
-                typing 3s steps(68, end),
+                typing 3s steps(64, end),
                 blink-cursor .75s step-end infinite;
         }
 
-        /* --- THE HUMAN HANDSHAKE --- */
-        .human-link {
+        /* --- THE BOTTOM HANDSHAKE --- */
+        .contact-container {
+            margin-top: auto; /* Pushes this section to the bottom */
+            padding-bottom: 60px; /* Distance from the very bottom/footer */
+            opacity: 0;
+            animation: fadeIn 2.5s ease-in 3.5s forwards; /* SLOWER 2.5s FADE */
+        }
+
+        .human-button {
+            display: inline-block;
             color: #FFFFFF;
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 400;
-            letter-spacing: 0.05em;
-            opacity: 0; 
-            animation: fadeIn 1s ease-in 3.5s forwards;
-            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 20px 40px;
+            border-radius: 2px;
+            transition: all 0.4s ease;
             cursor: pointer;
-            border-bottom: 1px solid transparent;
-            padding-bottom: 4px;
+            background: transparent;
         }
 
-        .human-link:hover {
-            opacity: 0.7 !important;
-            border-bottom: 1px solid #FFFFFF;
+        .human-button:hover {
+            border-color: #FFFFFF;
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
         }
 
-        @keyframes typing { from { width: 0 } to { width: 68ch } }
+        .btn-line-1 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-line-2 {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: #D0D0D0;
+            letter-spacing: 0.02em;
+            display: block;
+        }
+
+        /* --- THE FOOTER --- */
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            font-size: 0.55rem;
+            color: #A0A0A0;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeIn 1s ease-in 5.5s forwards;
+        }
+
+        @keyframes typing { from { width: 0 } to { width: 64ch } }
         @keyframes blink-cursor { from, to { border-color: transparent } 50% { border-color: #FFFFFF; } }
         @keyframes fadeIn { to { opacity: 1; } }
 
+        /* Mobile Adjustment: Ensure the byline doesn't scroll off-screen */
+        @media (max-width: 600px) {
+            .typewriter-byline { font-size: 0.6rem; width: 64ch; }
+            .human-button { padding: 15px 30px; }
+        }
     </style>
 </head>
 <body>
 
-    <img src="logo.png" alt="HIA" class="logo-seal">
+    <div class="brand-container">
+        <img src="logo.png" alt="HIA" class="logo-seal">
+        <img src="text-header-uc.png" alt="Higher Intelligence Agency" class="text-header">
+        <p class="typewriter-byline">
+            ART//AS//1: Applied Research & Technology // Adaptive Systems // 1
+        </p>
+    </div>
 
-    <img src="text-header-lc.png" alt="Higher Intelligence Agency" class="text-header">
-    
-    <p class="typewriter-byline">
-        ART//AS//1: Applied Research & Technology // Adaptive Systems // 1
-    </p>
+    <div class="contact-container">
+        <a href="javascript:void(0)" onclick="contactHIA()" class="human-button">
+            <span class="btn-line-1">Say Hi.</span>
+            <span class="btn-line-2">We're agentically human.</span>
+        </a>
+    </div>
 
-    <a href="javascript:void(0)" onclick="contactHIA()" class="human-link">
-        Say Hi. We're agentically human.
-    </a>
+    <div class="footer">
+        © 2026 // HIA // ART//AS//1
+    </div
 
     <script>
         function contactHIA() {
