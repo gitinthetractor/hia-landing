@@ -19,72 +19,81 @@
             padding: 20px;
             overflow: hidden;
         }
-        .logo {
-            width: 200px;
+
+        /* --- THE LOGO SEAL --- */
+        .logo-seal {
+            width: 150px;
             height: auto;
-            margin-bottom: 2.5rem;
-            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
         }
-        .typewriter-h1 {
+
+        /* --- THE CUSTOM IMAGE HEADER --- */
+        .text-header {
+            width: 100%;
+            max-width: 650px; /* Adjusted for clarity */
+            height: auto;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- THE TECHNICAL BYLINE (68 CHARACTERS) --- */
+        .typewriter-byline {
             font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            margin-bottom: 0.75rem;
-            text-transform: uppercase;
-            overflow: hidden; 
-            border-right: .15em solid #FFFFFF; 
-            white-space: nowrap; 
-            margin: 0 auto; 
-            width: 28ch; 
+            color: #E0E0E0;
+            font-size: 0.75rem;
+            letter-spacing: 0.02em;
+            margin-bottom: 4.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: .12em solid #FFFFFF;
+            margin-left: auto;
+            margin-right: auto;
+            width: 68ch; 
             animation: 
-                typing 2s steps(28, end),
+                typing 3s steps(68, end),
                 blink-cursor .75s step-end infinite;
         }
-        .mission {
-            color: #F0F0F0;
-            max-width: 700px;
-            line-height: 1.6;
-            margin-bottom: 4rem;
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            font-weight: 400;
-            text-transform: uppercase;
-            animation: fadeIn 1s ease-in 2.2s forwards;
-            opacity: 0;
-        }
-        .contact-link {
-            border: 1px solid #FFFFFF;
+
+        /* --- THE HUMAN HANDSHAKE --- */
+        .human-link {
             color: #FFFFFF;
-            padding: 12px 35px;
             text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            font-weight: 400;
             letter-spacing: 0.05em;
+            opacity: 0; 
+            animation: fadeIn 1s ease-in 3.5s forwards;
             transition: all 0.3s ease;
             cursor: pointer;
-            background: transparent;
-            border-radius: 4px;
-            outline: none;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 4px;
         }
-        .contact-link:hover {
-            background-color: #FFFFFF;
-            color: #808080;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+
+        .human-link:hover {
+            opacity: 0.7 !important;
+            border-bottom: 1px solid #FFFFFF;
         }
-        @keyframes typing { from { width: 0 } to { width: 28ch } }
+
+        @keyframes typing { from { width: 0 } to { width: 68ch } }
         @keyframes blink-cursor { from, to { border-color: transparent } 50% { border-color: #FFFFFF; } }
         @keyframes fadeIn { to { opacity: 1; } }
+
     </style>
 </head>
 <body>
-    <img src="logo.png" alt="HIA Seal" class="logo">
-    <h1 class="typewriter-h1">Higher Intelligence Agency</h1>
-    <p class="mission">
-        ART // AS // 1 : Applied Research & Technology // Adaptive Systems // 1
+
+    <img src="logo.png" alt="HIA" class="logo-seal">
+
+    <img src="text-header-uc.png" alt="Higher Intelligence Agency" class="text-header">
+    
+    <p class="typewriter-byline">
+        ART//AS//1 // Applied Research & Technology // Adaptive Systems // 1
     </p>
-    <button class="contact-link" onclick="contactHIA()">Say Hi</button>
+
+    <a href="javascript:void(0)" onclick="contactHIA()" class="human-link">
+        Say hi. We're human.
+    </a>
+
     <script>
         function contactHIA() {
             var user = "info"; 
@@ -92,5 +101,6 @@
             window.location.href = "mailto:" + user + "@" + domain;
         }
     </script>
+
 </body>
 </html>
