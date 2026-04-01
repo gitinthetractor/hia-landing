@@ -20,9 +20,9 @@
             overflow: hidden;
         }
 
-        /* --- THE BRAND BLOCK --- */
+        /* --- THE LOGO-TITLE BALANCE --- */
         .logo-seal {
-            width: 130px;
+            width: 150px; /* Stronger presence */
             height: auto;
             margin-bottom: 0.5rem;
             filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
@@ -30,7 +30,7 @@
 
         .text-header {
             width: 100%;
-            max-width: 600px; 
+            max-width: 480px; /* Tighter title to make the logo pop */
             height: auto;
             margin-bottom: 0.5rem;
         }
@@ -49,32 +49,14 @@
                 blink-cursor .75s step-end infinite;
         }
 
-        /* --- THE SEQUENTIAL TERMINAL SESSION --- */
-        .terminal-session {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .term-line {
+        /* --- ONE-LINE TERMINAL HANDSHAKE --- */
+        .terminal-line {
             font-size: 0.85rem;
             letter-spacing: 0.05em;
             opacity: 0;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        /* Line 1: Status message */
-        .line-1 {
             color: #D0D0D0;
-            animation: fadeInTerminal 0.5s ease-out 4s forwards;
-        }
-
-        /* Line 2: The Action Link */
-        .line-2 {
-            color: #FFFFFF;
-            animation: fadeInTerminal 0.5s ease-out 5s forwards;
+            animation: fadeInTerminal 0.8s ease-out 4s forwards;
+            white-space: nowrap;
         }
 
         .contact-trigger {
@@ -84,39 +66,42 @@
             transition: all 0.2s ease;
             border-bottom: 1px solid transparent;
             padding-bottom: 2px;
+            font-weight: 600;
         }
 
         .contact-trigger:hover {
             border-bottom: 1px solid #FFFFFF;
+            opacity: 0.8;
         }
 
-        /* --- THE FOOTER --- */
+        /* --- THE SUBTLE FOOTER --- */
         .footer {
             position: fixed;
-            bottom: 20px;
+            bottom: 25px;
             font-size: 0.55rem;
-            color: #A0A0A0;
+            color: #A0A0A0; /* The subtle silver/grey */
             letter-spacing: 0.15em;
             text-transform: uppercase;
             opacity: 0;
-            animation: fadeInTerminal 1s ease-in 6s forwards;
+            animation: fadeInTerminal 1s ease-in 5.5s forwards;
         }
 
-        /* --- ANIMATIONS --- */
+        /* --- KEYFRAMES --- */
         @keyframes typing { from { width: 0 } to { width: 64ch } }
         @keyframes blink-cursor { from, to { border-color: transparent } 50% { border-color: #FFFFFF; } }
         @keyframes fadeInTerminal { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Mobile Scale-down */
+        /* Mobile Optimization */
         @media (max-width: 600px) {
             .typewriter-byline { font-size: 0.55rem; width: 64ch; }
-            .term-line { font-size: 0.75rem; }
+            .terminal-line { font-size: 0.7rem; }
+            .text-header { max-width: 80%; }
         }
     </style>
 </head>
 <body>
 
-    <img src="logo.png" alt="HIA" class="logo-seal">
+    <img src="logo.png" alt="HIA Seal" class="logo-seal">
 
     <img src="text-header-lc.png" alt="Higher Intelligence Agency" class="text-header">
     
@@ -124,11 +109,8 @@
         ART//AS//1: Applied Research & Technology // Adaptive Systems // 1
     </p>
 
-    <div class="terminal-session">
-        <div class="term-line line-1">[status]: we're agentically human.</div>
-        <div class="term-line line-2">
-            >&nbsp;<a href="javascript:void(0)" onclick="contactHIA()" class="contact-trigger">Say Hi</a>
-        </div>
+    <div class="terminal-line">
+        mesg: we're agentically human. &nbsp;>&nbsp;<a href="javascript:void(0)" onclick="contactHIA()" class="contact-trigger">Say Hi</a>
     </div>
 
     <div class="footer">
