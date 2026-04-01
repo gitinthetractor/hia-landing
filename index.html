@@ -20,9 +20,9 @@
             overflow: hidden;
         }
 
-        /* --- THE LOGO-TITLE BALANCE --- */
+        /* --- BRANDING --- */
         .logo-seal {
-            width: 150px; /* Stronger presence */
+            width: 150px;
             height: auto;
             margin-bottom: 0.5rem;
             filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
@@ -30,33 +30,46 @@
 
         .text-header {
             width: 100%;
-            max-width: 480px; /* Tighter title to make the logo pop */
+            max-width: 480px; 
             height: auto;
             margin-bottom: 0.5rem;
         }
 
+        /* --- TERMINAL STACK --- */
+        .terminal-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Byline: Types 0-3s */
         .typewriter-byline {
             color: #E0E0E0;
             font-size: 0.7rem;
             letter-spacing: 0.02em;
-            margin-bottom: 5rem;
             white-space: nowrap;
             overflow: hidden;
-            border-right: .12em solid #FFFFFF;
-            width: 64ch; 
+            border-right: .12em solid transparent; /* Hide cursor initially */
+            width: 0;
             animation: 
-                typing 3s steps(64, end),
-                blink-cursor .75s step-end infinite;
+                typing-byline 3s steps(64, end) forwards,
+                blink-cursor-byline 0.75s step-end 4; /* Blinks for 3s then stops */
         }
 
-        /* --- ONE-LINE TERMINAL HANDSHAKE --- */
+        /* Mesg Line: Types 3.5-5.5s */
         .terminal-line {
             font-size: 0.85rem;
             letter-spacing: 0.05em;
-            opacity: 0;
             color: #D0D0D0;
-            animation: fadeInTerminal 0.8s ease-out 4s forwards;
             white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            border-right: .12em solid transparent;
+            /* 40 characters for: mesg: we're agentically human.  > Say Hi */
+            animation: 
+                typing-mesg 2s steps(40, end) 3.5s forwards,
+                blink-cursor-active 0.75s step-end infinite 3.5s; 
         }
 
         .contact-trigger {
@@ -74,43 +87,49 @@
             opacity: 0.8;
         }
 
-        /* --- THE SUBTLE FOOTER --- */
+        /* --- FOOTER --- */
         .footer {
             position: fixed;
             bottom: 25px;
             font-size: 0.55rem;
-            color: #A0A0A0; /* The subtle silver/grey */
+            color: #A0A0A0;
             letter-spacing: 0.15em;
             text-transform: uppercase;
             opacity: 0;
-            animation: fadeInTerminal 1s ease-in 5.5s forwards;
+            animation: fadeIn 1s ease-in 6s forwards;
         }
 
         /* --- KEYFRAMES --- */
-        @keyframes typing { from { width: 0 } to { width: 64ch } }
-        @keyframes blink-cursor { from, to { border-color: transparent } 50% { border-color: #FFFFFF; } }
-        @keyframes fadeInTerminal { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes typing-byline { from { width: 0; border-right-color: #FFFFFF; } to { width: 64ch; border-right-color: transparent; } }
+        @keyframes typing-mesg { from { width: 0; border-right-color: #FFFFFF; } to { width: 40ch; border-right-color: #FFFFFF; } }
+        
+        @keyframes blink-cursor-byline { from, to { border-right-color: transparent } 50% { border-right-color: #FFFFFF; } }
+        @keyframes blink-cursor-active { from, to { border-right-color: transparent } 50% { border-right-color: #FFFFFF; } }
+        
+        @keyframes fadeIn { to { opacity: 1; } }
 
-        /* Mobile Optimization */
+        /* Mobile Adjustments */
         @media (max-width: 600px) {
-            .typewriter-byline { font-size: 0.55rem; width: 64ch; }
-            .terminal-line { font-size: 0.7rem; }
-            .text-header { max-width: 80%; }
+            .typewriter-byline { font-size: 0.55rem; width: 0; animation: typing-byline-mob 3s steps(64, end) forwards; }
+            .terminal-line { font-size: 0.7rem; width: 0; animation: typing-mesg-mob 2s steps(40, end) 3.5s forwards; }
+            @keyframes typing-byline-mob { from { width: 0; } to { width: 64ch; } }
+            @keyframes typing-mesg-mob { from { width: 0; } to { width: 40ch; } }
         }
     </style>
 </head>
 <body>
 
     <img src="logo.png" alt="HIA Seal" class="logo-seal">
-
     <img src="text-header-lc.png" alt="Higher Intelligence Agency" class="text-header">
     
-    <p class="typewriter-byline">
-        ART//AS//1: Applied Research & Technology // Adaptive Systems // 1
-    </p>
+    <div class="terminal-stack">
+        <p class="typewriter-byline">
+            ART//AS//1: Applied Research & Technology // Adaptive Systems // 1
+        </p>
 
-    <div class="terminal-line">
-        mesg: we're agentically human. &nbsp;>&nbsp;<a href="javascript:void(0)" onclick="contactHIA()" class="contact-trigger">Say Hi</a>
+        <div class="terminal-line">
+            mesg: we're agentically human. &nbsp;>&nbsp;<a href="javascript:void(0)" onclick="contactHIA()" class="contact-trigger">Say Hi</a>
+        </div>
     </div>
 
     <div class="footer">
