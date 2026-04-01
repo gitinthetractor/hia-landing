@@ -10,77 +10,80 @@
 
     <style>
         body {
-            background-color: #808080; /* Tactical Grey */
+            background-color: #808080; /* Tactical Grey Restored */
             color: #FFFFFF;
             font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
+            min-height: 100vh; /* Changed to min-height to fix Pixel 7a clipping */
             margin: 0;
             text-align: center;
-            padding: 20px;
+            padding: 40px 20px; /* Added breathing room for mobile browser bars */
             box-sizing: border-box;
-            overflow-x: hidden;
         }
 
+        /* --- THE BRANDING (CENTERED) --- */
         .brand-wrapper {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 100%;
         }
 
         .logo-seal {
-            width: 140px;
+            width: 150px;
             height: auto;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
         }
 
         .text-header {
             width: 100%;
-            max-width: 450px; 
+            max-width: 480px; 
             height: auto;
             margin-bottom: 0.5rem;
         }
 
         .typewriter-byline {
             color: #E0E0E0;
-            font-size: 0.9rem;
+            font-size: 0.9rem; /* Increased size as requested */
             letter-spacing: 0.05em;
             white-space: nowrap;
             overflow: hidden;
             border-right: .12em solid #FFFFFF;
-            /* 49 characters = "Applied Research & Technology // Adaptive Systems" */
-            width: 49ch; 
+            width: 56ch; /* Precise length for the new string */
             margin: 15px auto;
             animation: 
-                typing 3s steps(49, end) forwards,
+                typing 3.5s steps(56, end) forwards,
                 blink-cursor 0.75s step-end infinite;
         }
 
+        /* --- THE UTILITY SECTION (FADE-IN REVEAL) --- */
         .utility-wrapper {
-            margin-top: auto;
-            padding-bottom: 40px;
+            margin-top: 40px; /* Ensures space on small screens */
+            padding-bottom: 20px;
             opacity: 0; 
-            animation: fadeInReveal 1.5s ease-in 3s forwards;
+            animation: fadeInReveal 1.5s ease-in 4s forwards;
         }
 
         .contact-link {
             color: #FFFFFF;
             text-decoration: none;
-            font-size: 0.85rem;
-            letter-spacing: 0.1em; /* Tighter spacing as requested */
+            font-size: 13px;
+            letter-spacing: 0.5em;
             font-weight: bold;
             transition: all 0.3s ease;
             cursor: pointer;
             display: inline-block;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             text-transform: uppercase;
+        }
+
+        .contact-link:hover {
+            text-shadow: 0 0 8px rgba(255,255,255,0.4);
         }
 
         .footer {
@@ -90,19 +93,20 @@
             text-transform: uppercase;
         }
 
-        @keyframes typing { from { width: 0 } to { width: 49ch } }
+        /* --- ANIMATIONS --- */
+        @keyframes typing { from { width: 0 } to { width: 56ch } }
         @keyframes blink-cursor { from, to { border-right-color: transparent } 50% { border-right-color: #FFFFFF; } }
         @keyframes fadeInReveal { to { opacity: 1; } }
 
-        /* Pixel 7a Scaling */
+        /* Mobile Scale-down for Pixel 7a */
         @media (max-width: 600px) {
             .typewriter-byline { 
-                font-size: 3vw; /* Slightly larger now that text is shorter */
-                width: 49ch; 
+                font-size: 0.65rem; 
+                width: 56ch; 
+                margin-bottom: 40px;
             }
-            .logo-seal { width: 110px; }
-            .text-header { max-width: 85%; }
-            .utility-wrapper { padding-bottom: 20px; }
+            .text-header { max-width: 90%; }
+            .utility-wrapper { margin-top: 20px; }
         }
     </style>
 </head>
@@ -112,13 +116,16 @@
         <img src="logo.png" alt="HIA Seal" class="logo-seal">
         <img src="text-header-lc.png" alt="Higher Intelligence Agency" class="text-header">
         
-        <p class="typewriter-byline">Applied Research & Technology // Adaptive Systems</p>
+        <p class="typewriter-byline">
+            Applied Research & Technology // Adaptive Systems //
+        </p>
     </div>
 
     <div class="utility-wrapper">
         <a href="#" onclick="window.location.href='mailto:' + 'contact' + '@' + 'hiagency' + '.digital'; return false;" class="contact-link">CONTACT</a>
+        
         <div class="footer">
-            © 2026 // HIA // ART//AS//1
+            © 2026 // HIA // ARTAS1
         </div>
     </div>
 
