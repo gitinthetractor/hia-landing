@@ -3,63 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HIA // Verified</title>
+    <title>Higher Intelligence Agency | HIA</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+
     <style>
         body {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            font-family: "Courier New", Courier, monospace;
-            text-align: center;
+            background-color: #808080; /* Tactical Grey */
+            color: #FFFFFF;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
             margin: 0;
-            padding-top: 80px;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden;
         }
-        img.logo {
-            width: 120px;
-            margin-bottom: 25px;
+
+        /* --- THE BRANDING (CENTERED) --- */
+        .brand-wrapper {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-        img.text-header {
-            width: 380px;
-            margin-bottom: 15px;
+
+        .logo-seal {
+            width: 150px;
+            height: auto;
+            margin-bottom: 0.5rem;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
         }
-        .sub-header {
-            color: #666666;
-            font-size: 0.8rem;
-            letter-spacing: 0.2em;
-            margin-top: 10px;
-            margin-bottom: 60px;
-        }
-        .nav-link {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: bold;
-            letter-spacing: 0.4em;
-            font-size: 1.1rem;
-        }
-        .footer {
-            position: fixed;
-            bottom: 30px;
+
+        .text-header {
             width: 100%;
-            color: #333333;
-            font-size: 0.65rem;
+            max-width: 480px; 
+            height: auto;
+            margin-bottom: 0.5rem;
+        }
+
+        .typewriter-byline {
+            color: #E0E0E0;
+            font-size: 0.7rem;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: .12em solid #FFFFFF;
+            width: 64ch; 
+            animation: 
+                typing 3s steps(64, end) forwards,
+                blink-cursor 0.75s step-end infinite;
+        }
+
+        /* --- THE UTILITY SECTION (FADE-IN REVEAL) --- */
+        .utility-wrapper {
+            margin-top: auto;
+            padding-bottom: 40px;
+            opacity: 0; 
+            animation: fadeInReveal 1.5s ease-in 3.5s forwards;
+        }
+
+        .contact-link {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 0.6rem; /* Slightly smaller for maximum precision */
+            letter-spacing: 0.4em; /* Increased spacing to compensate for removed pillars */
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+            margin-bottom: 12px;
+            opacity: 0.7;
+            text-transform: uppercase;
+        }
+
+        .contact-link:hover {
+            opacity: 1;
+            letter-spacing: 0.5em;
+            text-shadow: 0 0 8px rgba(255,255,255,0.4);
+        }
+
+        .footer {
+            font-size: 0.5rem;
+            color: #A0A0A0;
             letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes typing { from { width: 0 } to { width: 64ch } }
+        @keyframes blink-cursor { from, to { border-right-color: transparent } 50% { border-right-color: #FFFFFF; } }
+        @keyframes fadeInReveal { to { opacity: 1; } }
+
+        /* Mobile Scale-down */
+        @media (max-width: 600px) {
+            .typewriter-byline { font-size: 0.55rem; width: 64ch; }
+            .text-header { max-width: 80%; }
+            .contact-link { font-size: 0.55rem; letter-spacing: 0.3em; }
         }
     </style>
 </head>
 <body>
 
-    <img src="logo.png" alt="HIA Seal" class="logo">
-    <br>
-    <img src="text-header-lc.png" alt="Higher Intelligence Agency" class="text-header">
-
-    <div class="sub-header">
-        APPLIED RESEARCH & TECHNOLOGY // ADAPTIVE SYSTEMS ARTAS1
+    <div class="brand-wrapper">
+        <img src="logo.png" alt="HIA Seal" class="logo-seal">
+        <img src="text-header-lc.png" alt="Higher Intelligence Agency" class="text-header">
+        
+        <p class="typewriter-byline">
+            ART//AS//1: Applied Research & Technology // Adaptive Systems // 1
+        </p>
     </div>
 
-    <a href="mailto:contact@hiagency.digital" class="nav-link">C O N T A C T</a>
+    <div class="utility-wrapper">
+        <a href="javascript:void(0)" onclick="contactHIA()" class="contact-link">
+            CONTACT
+        </a>
 
-    <div class="footer">
-        © 2026 // HIA // ARTAS1
+        <div class="footer">
+            © 2026 // HIA // ART//AS//1
+        </div>
     </div>
+
+    <script>
+        function contactHIA() {
+            var user = "info"; 
+            var domain = "higherintelligence.agency";
+            window.location.href = "mailto:" + user + "@" + domain;
+        }
+    </script>
 
 </body>
 </html>
