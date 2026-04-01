@@ -8,47 +8,38 @@
         body {
             background-color: #808080; /* Tactical Grey */
             color: #FFFFFF;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* Using min-height and padding to allow for a 'spaced' layout */
-            min-height: 100vh;
-            margin: 0;
-            text-align: center;
-            padding: 40px 20px;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-
-        /* --- THE TOP SECTION --- */
-        .brand-container {
-            flex-grow: 1;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
         }
 
+        /* --- THE BRAND BLOCK --- */
         .logo-seal {
-            width: 140px;
+            width: 130px;
             height: auto;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
         }
 
         .text-header {
             width: 100%;
-            max-width: 650px; 
+            max-width: 600px; 
             height: auto;
             margin-bottom: 0.5rem;
         }
 
         .typewriter-byline {
-            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
             color: #E0E0E0;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             letter-spacing: 0.02em;
+            margin-bottom: 5rem;
             white-space: nowrap;
             overflow: hidden;
             border-right: .12em solid #FFFFFF;
@@ -58,46 +49,45 @@
                 blink-cursor .75s step-end infinite;
         }
 
-        /* --- THE BOTTOM HANDSHAKE --- */
-        .contact-container {
-            margin-top: auto; /* Pushes this section to the bottom */
-            padding-bottom: 60px; /* Distance from the very bottom/footer */
-            opacity: 0;
-            animation: fadeIn 2.5s ease-in 3.5s forwards; /* SLOWER 2.5s FADE */
+        /* --- THE SEQUENTIAL TERMINAL SESSION --- */
+        .terminal-session {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
 
-        .human-button {
-            display: inline-block;
+        .term-line {
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            opacity: 0;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        /* Line 1: Status message */
+        .line-1 {
+            color: #D0D0D0;
+            animation: fadeInTerminal 0.5s ease-out 4s forwards;
+        }
+
+        /* Line 2: The Action Link */
+        .line-2 {
+            color: #FFFFFF;
+            animation: fadeInTerminal 0.5s ease-out 5s forwards;
+        }
+
+        .contact-trigger {
             color: #FFFFFF;
             text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 20px 40px;
-            border-radius: 2px;
-            transition: all 0.4s ease;
             cursor: pointer;
-            background: transparent;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
         }
 
-        .human-button:hover {
-            border-color: #FFFFFF;
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-2px);
-        }
-
-        .btn-line-1 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            display: block;
-            margin-bottom: 4px;
-            letter-spacing: 0.05em;
-        }
-
-        .btn-line-2 {
-            font-size: 0.85rem;
-            font-weight: 300;
-            color: #D0D0D0;
-            letter-spacing: 0.02em;
-            display: block;
+        .contact-trigger:hover {
+            border-bottom: 1px solid #FFFFFF;
         }
 
         /* --- THE FOOTER --- */
@@ -109,40 +99,41 @@
             letter-spacing: 0.15em;
             text-transform: uppercase;
             opacity: 0;
-            animation: fadeIn 1s ease-in 5.5s forwards;
+            animation: fadeInTerminal 1s ease-in 6s forwards;
         }
 
+        /* --- ANIMATIONS --- */
         @keyframes typing { from { width: 0 } to { width: 64ch } }
         @keyframes blink-cursor { from, to { border-color: transparent } 50% { border-color: #FFFFFF; } }
-        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes fadeInTerminal { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Mobile Adjustment: Ensure the byline doesn't scroll off-screen */
+        /* Mobile Scale-down */
         @media (max-width: 600px) {
-            .typewriter-byline { font-size: 0.6rem; width: 64ch; }
-            .human-button { padding: 15px 30px; }
+            .typewriter-byline { font-size: 0.55rem; width: 64ch; }
+            .term-line { font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="brand-container">
-        <img src="logo.png" alt="HIA" class="logo-seal">
-        <img src="text-header-uc.png" alt="Higher Intelligence Agency" class="text-header">
-        <p class="typewriter-byline">
-            ART//AS//1: Applied Research & Technology // Adaptive Systems // 1
-        </p>
-    </div>
+    <img src="logo.png" alt="HIA" class="logo-seal">
 
-    <div class="contact-container">
-        <a href="javascript:void(0)" onclick="contactHIA()" class="human-button">
-            <span class="btn-line-1">Say Hi.</span>
-            <span class="btn-line-2">We're agentically human.</span>
-        </a>
+    <img src="text-header-lc.png" alt="Higher Intelligence Agency" class="text-header">
+    
+    <p class="typewriter-byline">
+        ART//AS//1: Applied Research & Technology // Adaptive Systems // 1
+    </p>
+
+    <div class="terminal-session">
+        <div class="term-line line-1">[status]: we're agentically human.</div>
+        <div class="term-line line-2">
+            >&nbsp;<a href="javascript:void(0)" onclick="contactHIA()" class="contact-trigger">Say Hi</a>
+        </div>
     </div>
 
     <div class="footer">
         © 2026 // HIA // ART//AS//1
-    </div
+    </div>
 
     <script>
         function contactHIA() {
