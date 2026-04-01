@@ -54,10 +54,10 @@
             white-space: nowrap;
             overflow: hidden;
             border-right: .12em solid #FFFFFF;
-            width: 53ch; /* Precise length for the new string */
+            width: 58ch; /* Precise length for the new string */
             margin: 15px auto;
             animation: 
-                typing 3.5s steps(53, end) forwards,
+                typing 3.5s steps(58, end) forwards,
                 blink-cursor 0.75s step-end infinite;
         }
 
@@ -94,7 +94,7 @@
         }
 
         /* --- ANIMATIONS --- */
-        @keyframes typing { from { width: 0 } to { width: 53ch } }
+        @keyframes typing { from { width: 0 } to { width: 58ch } }
         @keyframes blink-cursor { from, to { border-right-color: transparent } 50% { border-right-color: #FFFFFF; } }
         @keyframes fadeInReveal { to { opacity: 1; } }
 
@@ -102,7 +102,7 @@
         @media (max-width: 600px) {
             .typewriter-byline { 
                 font-size: 0.65rem; 
-                width: 56ch; 
+                width: 58ch; 
                 margin-bottom: 40px;
             }
             .text-header { max-width: 90%; }
