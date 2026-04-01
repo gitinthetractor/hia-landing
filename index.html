@@ -9,74 +9,52 @@
             background-color: #1a1a1a;
             color: #FFFFFF;
             font-family: 'Courier New', Courier, monospace;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
             text-align: center;
+            padding-top: 10vh; /* Keeps it top-heavy and sleek */
+            margin: 0;
         }
-        .container {
-            max-width: 800px;
-            padding: 20px;
-        }
-        .logo {
-            width: 120px;
-            margin-bottom: 1.5rem;
-            filter: grayscale(100%);
-            opacity: 0.9;
-        }
-        .header-text {
-            width: 300px;
-            margin-bottom: 1rem;
-        }
+        .logo { width: 120px; margin-bottom: 30px; }
+        .text-header { width: 380px; margin-bottom: 20px; }
+        
         .sub-header {
-            font-size: 0.85rem;
-            letter-spacing: 0.15em;
-            color: #888;
-            margin-bottom: 3rem;
-            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            color: #666;
+            margin-bottom: 60px;
         }
-        .nav-links a {
+        
+        .contact-link {
             text-decoration: none;
             color: #FFFFFF;
             font-weight: bold;
+            letter-spacing: 0.4em;
             font-size: 1.1rem;
-            letter-spacing: 0.3em;
-            border: 1px solid #444;
-            padding: 10px 30px;
-            transition: all 0.3s ease;
+            opacity: 0.8;
+            transition: opacity 0.3s;
         }
-        .nav-links a:hover {
-            background-color: #FFFFFF;
-            color: #1a1a1a;
-            border-color: #FFFFFF;
-        }
+        .contact-link:hover { opacity: 1; }
+
         .footer {
-            position: absolute;
-            bottom: 2rem;
-            font-size: 0.7rem;
-            color: #444;
-            letter-spacing: 0.1em;
+            position: fixed;
+            bottom: 30px;
+            width: 100%;
+            font-size: 0.6rem;
+            color: #333;
+            letter-spacing: 0.15em;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <img src="logo.png" alt="HIA Seal" class="logo">
-        <br>
-        <img src="text-header-lc.png" alt="Higher Intelligence Agency" class="header-text">
-        
-        <div class="sub-header">
-            Applied Research & Technology // Adaptive Systems ARTAS1
-        </div>
-
-        <div class="nav-links">
-            <a href="mailto:contact@hiagency.digital">C O N T A C T</a>
-        </div>
+    <img src="logo.png" alt="HIA Seal" class="logo">
+    <br>
+    <img src="text-header-lc.png" alt="Higher Intelligence Agency" class="text-header">
+    
+    <div class="sub-header">
+        APPLIED RESEARCH & TECHNOLOGY // ADAPTIVE SYSTEMS ARTAS1
     </div>
+
+    <a href="mailto:contact@hiagency.digital" class="contact-link">C O N T A C T</a>
 
     <div class="footer">
         © 2026 // HIA // ARTAS1
